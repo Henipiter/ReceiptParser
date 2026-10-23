@@ -1,9 +1,9 @@
 package com.henipiter.receipt.fileanalyzer.parser.receipt
 
-import com.henipiter.receipt.base.Address
-import com.henipiter.receipt.base.Product
-import com.henipiter.receipt.base.Receipt
-import com.henipiter.receipt.base.Store
+import com.henipiter.receipt.parsed.AddressParsed
+import com.henipiter.receipt.parsed.ProductParsed
+import com.henipiter.receipt.parsed.ReceiptParsed
+import com.henipiter.receipt.parsed.StoreParsed
 import com.henipiter.receipt.fileanalyzer.parser.model.ReceiptData
 import com.henipiter.receipt.fileanalyzer.parser.util.Stores
 import kotlin.math.roundToInt
@@ -20,7 +20,7 @@ class IntercityParser : ReceiptParser {
         val products = buildProducts(ticketEntries, receiptPrice, defaultCategoryId, route)
 
         return ReceiptData(
-            address = Address(
+            address = AddressParsed(
                 "",
                 storeId,
                 "Warszawa",
@@ -30,7 +30,7 @@ class IntercityParser : ReceiptParser {
                 true
             ),
             products = products,
-            receipt = Receipt().apply {
+            receipt = ReceiptParsed().apply {
                 this.storeId = storeId
                 date = receiptDate
                 time = receiptTime
@@ -38,7 +38,7 @@ class IntercityParser : ReceiptParser {
                 ptu = receiptTax
                 online = true
             },
-            store = Store().apply {
+            store = StoreParsed().apply {
                 name = Stores.INTERCITY.storeName
                 nip = Stores.INTERCITY.nip
             }
@@ -149,7 +149,7 @@ class IntercityParser : ReceiptParser {
         totalPrice: Int,
         defaultCategoryId: String,
         route: String
-    ): MutableList<Product> {
+    ): MutableList<ProductParsed> {
         if (entries.isEmpty()) {
             return mutableListOf()
         }
@@ -157,7 +157,7 @@ class IntercityParser : ReceiptParser {
         val weights = entries.map { it.quantity * (100 - it.discountPercent) }
         val totalWeight = weights.sum()
 
-        val products = mutableListOf<Product>()
+        val products = mutableListOf<ProductParsed>()
         var allocated = 0
 
         entries.forEachIndexed { index, entry ->
@@ -172,7 +172,7 @@ class IntercityParser : ReceiptParser {
             val fullName = if (route.isNotBlank()) "${entry.name} ($route)" else entry.name
 
             products.add(
-                Product().apply {
+                ProductParsed().apply {
                     name = fullName
                     quantity = entry.quantity * 1000
                     unitPrice = unit

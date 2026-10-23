@@ -1,10 +1,10 @@
 package com.henipiter.receipt.fileanalyzer.parser.receipt
 
 
-import com.henipiter.receipt.base.Address
-import com.henipiter.receipt.base.Product
-import com.henipiter.receipt.base.Receipt
-import com.henipiter.receipt.base.Store
+import com.henipiter.receipt.parsed.AddressParsed
+import com.henipiter.receipt.parsed.ProductParsed
+import com.henipiter.receipt.parsed.ReceiptParsed
+import com.henipiter.receipt.parsed.StoreParsed
 import com.henipiter.receipt.fileanalyzer.parser.model.ReceiptData
 import com.henipiter.receipt.fileanalyzer.parser.util.Stores
 import org.jsoup.Jsoup
@@ -29,14 +29,14 @@ class LidlParser : ReceiptParser {
         return ReceiptData(
             address = address,
             products = products,
-            receipt = Receipt().apply {
+            receipt = ReceiptParsed().apply {
                 this.storeId = storeId
                 date = receiptDate
                 time = receiptTime
                 pln = receiptPrice
                 ptu = receiptTax
             },
-            store = Store().apply {
+            store = StoreParsed().apply {
                 name = Stores.LIDL.storeName
                 nip = Stores.LIDL.nip
             }
@@ -49,15 +49,15 @@ class LidlParser : ReceiptParser {
         return match?.value ?: "00:00"
     }
 
-    private fun getAddress(soup: Document, storeId: String): Address {
+    private fun getAddress(soup: Document, storeId: String): AddressParsed {
         val line = soup.select("#header_line_6").firstOrNull()?.text()?.trim() ?: ""
         if (line.isBlank()) {
-            return Address()
+            return AddressParsed()
         }
 
         val parts = line.split(",")
         if (parts.size < 2) {
-            return Address()
+            return AddressParsed()
         }
 
         val streetName = parts[0].trim().replace(Regex("(?i)^ul\\.\\s*"), "").trim()
@@ -67,7 +67,7 @@ class LidlParser : ReceiptParser {
         val postalCode = match?.groupValues?.get(1) ?: ""
         val city = match?.groupValues?.get(2)?.trim() ?: ""
 
-        return Address(
+        return AddressParsed(
             "",
             storeId = storeId,
             city = city,
@@ -81,8 +81,8 @@ class LidlParser : ReceiptParser {
     private fun analyzeProducts(
         purchaseList: Element?,
         defaultCategoryId: String
-    ): MutableList<Product> {
-        val products = mutableListOf<Product>()
+    ): MutableList<ProductParsed> {
+        val products = mutableListOf<ProductParsed>()
         purchaseList?.children()?.forEach { span ->
             val classes = span.classNames()
             when {
@@ -142,7 +142,7 @@ class LidlParser : ReceiptParser {
     }
 
     private fun sameAsBefore(
-        last: Product,
+        last: ProductParsed,
         productName: String,
         productQuantity: Int,
         priceUnit: Int
@@ -151,7 +151,7 @@ class LidlParser : ReceiptParser {
 
     private fun calculateArticle(
         span: Element,
-        products: MutableList<Product>,
+        products: MutableList<ProductParsed>,
         defaultCategoryId: String
     ) {
         val productName = span.attr("data-art-description").trim()
@@ -163,7 +163,7 @@ class LidlParser : ReceiptParser {
         val last = products.lastOrNull()
         if (last == null || !sameAsBefore(last, productName, productQuantity, priceUnit)) {
             products.add(
-                Product().apply {
+                ProductParsed().apply {
                     name = productName
                     quantity = productQuantity
                     unitPrice = priceUnit
@@ -189,7 +189,7 @@ class LidlParser : ReceiptParser {
         return (productPriceUnit * 100).roundToInt()
     }
 
-    private fun calculateDiscount(span: Element, products: MutableList<Product>) {
+    private fun calculateDiscount(span: Element, products: MutableList<ProductParsed>) {
         val match = Regex("""-([\d,]+)""").find(span.text().trim())
         match?.let {
             products.lastOrNull()?.let { prod ->

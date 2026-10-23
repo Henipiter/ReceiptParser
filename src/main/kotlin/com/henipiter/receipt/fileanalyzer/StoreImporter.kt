@@ -2,6 +2,7 @@ package com.henipiter.receipt.fileanalyzer
 
 import kotlin.io.encoding.Base64
 import com.henipiter.receipt.fileanalyzer.parser.util.Stores
+import kotlin.io.encoding.ExperimentalEncodingApi
 
 enum class PayloadType { JSON, HTML, PDF_BASE64 }
 
@@ -12,8 +13,9 @@ data class RawReceipt(
     val type: PayloadType,
     val payload: String
 ) {
+    @OptIn(ExperimentalEncodingApi::class)
     fun bytes(): ByteArray = when (type) {
-        PayloadType.PDF_BASE64 -> Base64.decode(payload)
+        PayloadType.PDF_BASE64 -> Base64.Mime.decode(payload)
         else -> payload.toByteArray(Charsets.UTF_8)
     }
 }

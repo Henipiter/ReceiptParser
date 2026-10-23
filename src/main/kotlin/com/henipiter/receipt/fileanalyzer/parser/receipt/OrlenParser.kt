@@ -1,10 +1,10 @@
 package com.henipiter.receipt.fileanalyzer.parser.receipt
 
 
-import com.henipiter.receipt.base.Address
-import com.henipiter.receipt.base.Product
-import com.henipiter.receipt.base.Receipt
-import com.henipiter.receipt.base.Store
+import com.henipiter.receipt.parsed.AddressParsed
+import com.henipiter.receipt.parsed.ProductParsed
+import com.henipiter.receipt.parsed.ReceiptParsed
+import com.henipiter.receipt.parsed.StoreParsed
 import com.henipiter.receipt.dto.PriceUtils
 import com.henipiter.receipt.fileanalyzer.parser.model.ReceiptData
 import com.henipiter.receipt.fileanalyzer.parser.util.Stores
@@ -23,21 +23,21 @@ class OrlenParser : ReceiptParser {
         return ReceiptData(
             address = address,
             products = pair.first,
-            receipt = Receipt().apply {
+            receipt = ReceiptParsed().apply {
                 this.storeId = storeId
                 date = receiptDate
                 time = "00:00"
                 pln = receiptPrice
                 ptu = pair.second
             },
-            store = Store().apply {
+            store = StoreParsed().apply {
                 name = receiptStoreName
                 nip = receiptNip
             }
         )
     }
 
-    private fun getAddress(content: String, storeId: String): Address {
+    private fun getAddress(content: String, storeId: String): AddressParsed {
         val addresses = addressPattern.findAll(content).map { m ->
             if (m.groups["street1"] != null) {
                 Triple(
@@ -54,11 +54,11 @@ class OrlenParser : ReceiptParser {
             }
         }.toList()
 
-        if (addresses.isEmpty()) return Address()
+        if (addresses.isEmpty()) return AddressParsed()
 
         val (street, postal, city) = if (addresses.size >= 2) addresses[1] else addresses[0]
 
-        return Address(
+        return AddressParsed(
             "",
             storeId = storeId,
             city = city,
@@ -104,9 +104,9 @@ class OrlenParser : ReceiptParser {
     private fun analyzeProduct(
         content: String,
         defaultCategoryId: String
-    ): Pair<MutableList<Product>, Int> {
+    ): Pair<MutableList<ProductParsed>, Int> {
 
-        val products = mutableListOf<Product>()
+        val products = mutableListOf<ProductParsed>()
         var receiptTax = 0
 
         for (result in productPattern.findAll(content)) {
@@ -126,7 +126,7 @@ class OrlenParser : ReceiptParser {
             receiptTax += productVatAmount
 
             products.add(
-                Product().apply {
+                ProductParsed().apply {
                     name = productName
                     quantity = productQuantity
                     unitPrice = productPriceUnit

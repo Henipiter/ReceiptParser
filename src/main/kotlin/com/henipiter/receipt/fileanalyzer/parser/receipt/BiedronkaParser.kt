@@ -1,9 +1,9 @@
 package com.henipiter.receipt.fileanalyzer.parser.receipt
 
-import com.henipiter.receipt.base.Address
-import com.henipiter.receipt.base.Product
-import com.henipiter.receipt.base.Receipt
-import com.henipiter.receipt.base.Store
+import com.henipiter.receipt.parsed.AddressParsed
+import com.henipiter.receipt.parsed.ProductParsed
+import com.henipiter.receipt.parsed.ReceiptParsed
+import com.henipiter.receipt.parsed.StoreParsed
 import com.henipiter.receipt.fileanalyzer.parser.model.ReceiptData
 import com.henipiter.receipt.fileanalyzer.parser.util.Stores
 import kotlinx.serialization.json.Json
@@ -26,7 +26,7 @@ class BiedronkaParser : ReceiptParser {
 
         var receiptDate = ""
         var receiptTime = "00:00"
-        var address = Address()
+        var address = AddressParsed()
         val header = data["header"]?.jsonArray
         if (header != null) {
             for (element in header) {
@@ -46,7 +46,7 @@ class BiedronkaParser : ReceiptParser {
             }
         }
 
-        val products = mutableListOf<Product>()
+        val products = mutableListOf<ProductParsed>()
 
         var receiptPrice = 0
         var receiptTax = 0
@@ -60,14 +60,14 @@ class BiedronkaParser : ReceiptParser {
         return ReceiptData(
             address = address,
             products = products,
-            receipt = Receipt().apply {
+            receipt = ReceiptParsed().apply {
                 this.storeId = storeId
                 date = receiptDate
                 time = receiptTime
                 pln = receiptPrice
                 ptu = receiptTax
             },
-            store = Store().apply {
+            store = StoreParsed().apply {
                 name = Stores.BIEDRONKA.storeName
                 nip = Stores.BIEDRONKA.nip
             }
@@ -93,13 +93,13 @@ class BiedronkaParser : ReceiptParser {
         }.getOrDefault("00:00")
     }
 
-    private fun parseAddress(headerTextLines: String, storeId: String): Address {
+    private fun parseAddress(headerTextLines: String, storeId: String): AddressParsed {
         val divs = Regex("<div[^>]*>(.*?)</div>").findAll(headerTextLines)
             .map { it.groupValues[1] }
             .toList()
 
         if (divs.size < 2) {
-            return Address()
+            return AddressParsed()
         }
 
         val storeAddressLine = divs[1]
@@ -109,7 +109,7 @@ class BiedronkaParser : ReceiptParser {
 
         val parts = storeAddressLine.split(Regex("(?i)UL\\."), limit = 2)
         if (parts.size < 2) {
-            return Address()
+            return AddressParsed()
         }
 
         val postalAndCity = parts[0].trim().split(" ", limit = 2)
@@ -126,7 +126,7 @@ class BiedronkaParser : ReceiptParser {
             streetOnly
         }
 
-        return Address(
+        return AddressParsed(
             city = city,
             postalCode = postalCode,
             streetName = streetName,
@@ -138,7 +138,7 @@ class BiedronkaParser : ReceiptParser {
 
     private fun readProducts(
         body: JsonArray,
-        products: MutableList<Product>,
+        products: MutableList<ProductParsed>,
         defaultCategoryId: String
     ): Pair<Int, Int> {
         var receiptPrice = 0
@@ -171,13 +171,13 @@ class BiedronkaParser : ReceiptParser {
         return (double * 1000).roundToInt()
     }
 
-    private fun calculateSellLine(item: JsonObject, defaultCategoryId: String): Product {
+    private fun calculateSellLine(item: JsonObject, defaultCategoryId: String): ProductParsed {
         val sl = item["sellLine"]?.jsonObject
         val subtotalPriceValue = sl?.get("total")?.jsonPrimitive?.intOrNull ?: 0
         val quantityValue =
             stringToQuantity(sl?.get("quantity")?.jsonPrimitive?.contentOrNull ?: "1")
 
-        return Product().apply {
+        return ProductParsed().apply {
             name = sl?.get("name")?.jsonPrimitive?.contentOrNull?.trim() ?: ""
             quantity = quantityValue
             unitPrice = sl?.get("price")?.jsonPrimitive?.intOrNull ?: 0
@@ -190,7 +190,7 @@ class BiedronkaParser : ReceiptParser {
         }
     }
 
-    private fun calculateDiscountLine(item: JsonObject, products: List<Product>) {
+    private fun calculateDiscountLine(item: JsonObject, products: List<ProductParsed>) {
         val dl = item["discountLine"]?.jsonObject ?: return
         products.lastOrNull()?.let {
             it.discount += dl["value"]?.jsonPrimitive?.intOrNull ?: 0
