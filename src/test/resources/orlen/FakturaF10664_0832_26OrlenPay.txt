@@ -1,0 +1,39 @@
+Faktura nr: F 1111/1111/11 Data wystawienia: 2026-01-05
+Wystawca: ORLEN S.A.
+NIP: 774-00-01-454
+Adres: Chemików 7 09-411 Płock
+ORLEN S.A.
+Stacja paliw nr 0832
+89-500 Tuchola
+ul. Chojnicka nr 75
+Nabywca: Jan Kowalski
+Adres: Jasminowa 22 11-111 Warszawa
+Nr rejestracyjny pojazdu: Bez numeru
+Lp Nazwa towaru Jm
+Ilość
+[Jm]
+Cena
+brutto
+Wartość
+rabatu
+Cena
+brutto po
+rabacie
+Wartość
+netto
+VAT
+[%]
+Kwota
+VAT
+Wartość
+brutto
+1 GAZ LPG L 38,680 3,62 3,87 3,52 110,69 23 25,46 136,15
+Razem: 110,69 25,46 136,15
+w tym: 110,69 23 25,46 136,15
+Faktura wygenerowana automatycznie
+Do dokumentów: Dok. wydania: 1111 Dok.fisk.nr 1111 z dnia 2026-01-05
+Należność ogółem: 136,15 PLN
+Słownie: sto trzydzieści sześć PLN, 15/100
+Zapłacono: Aplikacja mobilna ORLEN Pay
+OFFLINE CERTYFIKAT
+Strona 1 z 1

@@ -1,0 +1,452 @@
+{
+  "protoVersion": "000",
+  "IDZ": " ",
+  "deviceType": 2,
+  "printed": false,
+  "data": "xx",
+  "header": [
+    {
+      "headerText": {
+        "headerTextLines": "<div class=\"align-center \">BIEDRONKA&nbsp;&quot;CODZIENNIE&nbsp;NISKIE&nbsp;CENY&quot;&nbsp;4744<\/div><div class=\"align-center \">60-149&nbsp;POZNA\u0143&nbsp;UL.&nbsp;GWIA\u0179DZISTA&nbsp;30<\/div><div class=\"align-center \">JERONIMO&nbsp;MARTINS&nbsp;POLSKA&nbsp;S.A.<\/div><div class=\"align-center \">62-025&nbsp;KOSTRZYN&nbsp;UL.\u017bNIWNA&nbsp;5<\/div>"
+      }
+    },
+    {
+      "headerData": {
+        "tin": "111",
+        "docNumber": 111,
+        "date": "2026-01-07T17:59:00.000Z",
+        "CPS": 1111
+      }
+    }
+  ],
+  "body": [
+    {
+      "sellLine": {
+        "name": "SerKasztela\u015amiet380g     C",
+        "vatId": "C",
+        "price": 1599,
+        "total": 3198,
+        "quantity": "2",
+        "isStorno": false
+      }
+    },
+    {
+      "discountLine": {
+        "base": 3198,
+        "value": 1000,
+        "isDiscount": true,
+        "isPercent": false,
+        "isStorno": false,
+        "vatId": "C"
+      }
+    },
+    {
+      "sellLine": {
+        "name": "CiastkMilkaSen156g       C",
+        "vatId": "C",
+        "price": 899,
+        "total": 899,
+        "quantity": "1",
+        "isStorno": false
+      }
+    },
+    {
+      "sellLine": {
+        "name": "SerTwarChuDeli250g       C",
+        "vatId": "C",
+        "price": 366,
+        "total": 366,
+        "quantity": "1",
+        "isStorno": false
+      }
+    },
+    {
+      "sellLine": {
+        "name": "\u017belZozlHello75-100g      A",
+        "vatId": "A",
+        "price": 299,
+        "total": 299,
+        "quantity": "1",
+        "isStorno": false
+      }
+    },
+    {
+      "sellLine": {
+        "name": "MusOwocOwolovo200g       C",
+        "vatId": "C",
+        "price": 349,
+        "total": 349,
+        "quantity": "1",
+        "isStorno": false
+      }
+    },
+    {
+      "sellLine": {
+        "name": "SerekWiejsLekk200g       C",
+        "vatId": "C",
+        "price": 229,
+        "total": 1374,
+        "quantity": "6",
+        "isStorno": false
+      }
+    },
+    {
+      "discountLine": {
+        "base": 1374,
+        "value": 458,
+        "isDiscount": true,
+        "isPercent": false,
+        "isStorno": false,
+        "vatId": "C"
+      }
+    },
+    {
+      "sellLine": {
+        "name": "Og\u00f3rekSzkLuz             C",
+        "vatId": "C",
+        "price": 999,
+        "total": 504,
+        "quantity": "0,505",
+        "isStorno": false
+      }
+    },
+    {
+      "discountLine": {
+        "base": 504,
+        "value": 252,
+        "isDiscount": true,
+        "isPercent": false,
+        "isStorno": false,
+        "vatId": "C"
+      }
+    },
+    {
+      "sellLine": {
+        "name": "ChustHigDelik150szt      A",
+        "vatId": "A",
+        "price": 399,
+        "total": 798,
+        "quantity": "2",
+        "isStorno": false
+      }
+    },
+    {
+      "discountLine": {
+        "base": 798,
+        "value": 200,
+        "isDiscount": true,
+        "isPercent": false,
+        "isStorno": false,
+        "vatId": "A"
+      }
+    },
+    {
+      "sellLine": {
+        "name": "ChustHigDelik150szt      A",
+        "vatId": "A",
+        "price": 399,
+        "total": 798,
+        "quantity": "2",
+        "isStorno": false
+      }
+    },
+    {
+      "discountLine": {
+        "base": 798,
+        "value": 200,
+        "isDiscount": true,
+        "isPercent": false,
+        "isStorno": false,
+        "vatId": "A"
+      }
+    },
+    {
+      "sellLine": {
+        "name": "ChustHigDelik150szt      A",
+        "vatId": "A",
+        "price": 399,
+        "total": 798,
+        "quantity": "2",
+        "isStorno": false
+      }
+    },
+    {
+      "discountLine": {
+        "base": 798,
+        "value": 200,
+        "isDiscount": true,
+        "isPercent": false,
+        "isStorno": false,
+        "vatId": "A"
+      }
+    },
+    {
+      "sellLine": {
+        "name": "MozzarellaLight125g      C",
+        "vatId": "C",
+        "price": 299,
+        "total": 598,
+        "quantity": "2",
+        "isStorno": false
+      }
+    },
+    {
+      "sellLine": {
+        "name": "KefirKrasnyst420g        C",
+        "vatId": "C",
+        "price": 289,
+        "total": 1156,
+        "quantity": "4",
+        "isStorno": false
+      }
+    },
+    {
+      "sellLine": {
+        "name": "Passata Mutti 700g       C",
+        "vatId": "C",
+        "price": 999,
+        "total": 3996,
+        "quantity": "4",
+        "isStorno": false
+      }
+    },
+    {
+      "sellLine": {
+        "name": "OcetCulineo 0,75l        A",
+        "vatId": "A",
+        "price": 269,
+        "total": 538,
+        "quantity": "2",
+        "isStorno": false
+      }
+    },
+    {
+      "sellLine": {
+        "name": "MentosCleaBerry21g       B",
+        "vatId": "B",
+        "price": 599,
+        "total": 599,
+        "quantity": "1",
+        "isStorno": false
+      }
+    },
+    {
+      "sellLine": {
+        "name": "EkWanBurDrOetker30ml     A",
+        "vatId": "A",
+        "price": 699,
+        "total": 699,
+        "quantity": "1",
+        "isStorno": false
+      }
+    },
+    {
+      "sellLine": {
+        "name": "Ziemniaki Wczesne        C",
+        "vatId": "C",
+        "price": 599,
+        "total": 749,
+        "quantity": "1,250",
+        "isStorno": false
+      }
+    },
+    {
+      "discountLine": {
+        "base": 749,
+        "value": 250,
+        "isDiscount": true,
+        "isPercent": false,
+        "isStorno": false,
+        "vatId": "C"
+      }
+    },
+    {
+      "sellLine": {
+        "name": "Chleb mul ziar335g       C",
+        "vatId": "C",
+        "price": 469,
+        "total": 469,
+        "quantity": "1",
+        "isStorno": false
+      }
+    },
+    {
+      "sellLine": {
+        "name": "ChlebOrkiszZiarn410g     C",
+        "vatId": "C",
+        "price": 529,
+        "total": 1058,
+        "quantity": "2",
+        "isStorno": false
+      }
+    },
+    {
+      "discountLine": {
+        "base": 1058,
+        "value": 108,
+        "isDiscount": true,
+        "isPercent": false,
+        "isStorno": false,
+        "vatId": "C"
+      }
+    },
+    {
+      "discountVat": {
+        "base": 3330,
+        "value": 2008,
+        "isDiscount": true,
+        "isPercent": false,
+        "name": "Voucher",
+        "isStorno": false,
+        "vatId": "A"
+      }
+    },
+    {
+      "discountVat": {
+        "base": 599,
+        "value": 362,
+        "isDiscount": true,
+        "isPercent": false,
+        "name": "Voucher",
+        "isStorno": false,
+        "vatId": "B"
+      }
+    },
+    {
+      "discountVat": {
+        "base": 12648,
+        "value": 7630,
+        "isDiscount": true,
+        "isPercent": false,
+        "name": "Voucher",
+        "isStorno": false,
+        "vatId": "C"
+      }
+    },
+    {
+      "discountSummary": {
+        "discounts": 12668
+      }
+    },
+    {
+      "vatSummary": {
+        "currency": "PLN",
+        "vatRatesSummary": [
+          {
+            "vatId": "A",
+            "vatRate": 2300,
+            "vatSale": 1322,
+            "vatAmount": 247
+          },
+          {
+            "vatId": "B",
+            "vatRate": 800,
+            "vatSale": 237,
+            "vatAmount": 18
+          },
+          {
+            "vatId": "C",
+            "vatRate": 500,
+            "vatSale": 5018,
+            "vatAmount": 239
+          }
+        ]
+      }
+    },
+    {
+      "sumInCurrency": {
+        "fiscalTotal": 6577,
+        "totalWithPacks": 6577,
+        "currency": "PLN",
+        "printBig": true,
+        "printable": true
+      }
+    },
+    {
+      "section": {
+        "type": 3
+      }
+    },
+    {
+      "payment": {
+        "type": "2",
+        "amount": 6577,
+        "name": "Visa Debit 07 1",
+        "currency": "PLN"
+      }
+    },
+    {
+      "fiscalFooter": {
+        "billNumber": 194,
+        "uniqueNumber": "EAZ2000",
+        "cashNumber": "Kasa 12",
+        "cashier": "Kasjer nr 24",
+        "CPS": 56,
+        "date": "2026-05-07T17:59:43.000Z"
+      }
+    },
+    {
+      "addLine": {
+        "id": 0,
+        "data": "<div class=\"align-left \">Nr&nbsp;transakcji:<span class=\"float-right \">1<\/span><\/div>",
+        "width": 80,
+        "CPS": 56
+      }
+    },
+    {
+      "addLine": {
+        "id": 30,
+        "data": "<div class=\"align-left \">Numer:<span class=\"float-right \">1<\/span><\/div>",
+        "width": 80,
+        "CPS": 56
+      }
+    },
+    {
+      "addLine": {
+        "id": 41,
+        "data": "<div class=\"align-left \">Udzielono&nbsp;\u0142\u0105cznie&nbsp;rabat\u00f3w&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class=\"font-wide \">126,68<\/span><\/div>",
+        "width": 80,
+        "CPS": 56
+      }
+    },
+    {
+      "addLine": {
+        "id": 41,
+        "data": "<div class=\"align-left \">w&nbsp;tym:<\/div>",
+        "width": 80,
+        "CPS": 56
+      }
+    },
+    {
+      "addLine": {
+        "id": 41,
+        "data": "<div class=\"align-left \">&nbsp;&nbsp;Promocje&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class=\"font-wide \">26,68<\/span><\/div>",
+        "width": 80,
+        "CPS": 56
+      }
+    },
+    {
+      "addLine": {
+        "id": 41,
+        "data": "<div class=\"align-left \">&nbsp;&nbsp;Voucher&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class=\"font-wide \">100,00<\/span><\/div>",
+        "width": 80,
+        "CPS": 56
+      }
+    },
+    {
+      "addLine": {
+        "id": 6,
+        "data": "<div class=\"align-left \">Numer&nbsp;karty:<span class=\"float-right \">00000*****000<\/span><\/div>",
+        "width": 80,
+        "CPS": 56
+      }
+    },
+    {
+      "barcode": {
+        "id": 5,
+        "data": "xxxx=="
+      }
+    }
+  ],
+  "sign": "x"
+}

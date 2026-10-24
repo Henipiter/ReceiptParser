@@ -1,19 +1,12 @@
 package com.henipiter.receipt.fileanalyzer.parser.receipt
 
+import com.henipiter.receipt.fileanalyzer.parser.model.ReceiptData
+import com.henipiter.receipt.fileanalyzer.parser.util.Stores
 import com.henipiter.receipt.parsed.AddressParsed
 import com.henipiter.receipt.parsed.ProductParsed
 import com.henipiter.receipt.parsed.ReceiptParsed
 import com.henipiter.receipt.parsed.StoreParsed
-import com.henipiter.receipt.fileanalyzer.parser.model.ReceiptData
-import com.henipiter.receipt.fileanalyzer.parser.util.Stores
-import kotlinx.serialization.json.Json
-import kotlinx.serialization.json.JsonArray
-import kotlinx.serialization.json.JsonObject
-import kotlinx.serialization.json.contentOrNull
-import kotlinx.serialization.json.intOrNull
-import kotlinx.serialization.json.jsonArray
-import kotlinx.serialization.json.jsonObject
-import kotlinx.serialization.json.jsonPrimitive
+import kotlinx.serialization.json.*
 import java.time.Instant
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter

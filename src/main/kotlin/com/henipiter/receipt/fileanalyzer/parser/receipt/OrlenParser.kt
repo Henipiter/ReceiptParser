@@ -1,13 +1,13 @@
 package com.henipiter.receipt.fileanalyzer.parser.receipt
 
 
+import com.henipiter.receipt.dto.PriceUtils
+import com.henipiter.receipt.fileanalyzer.parser.model.ReceiptData
+import com.henipiter.receipt.fileanalyzer.parser.util.Stores
 import com.henipiter.receipt.parsed.AddressParsed
 import com.henipiter.receipt.parsed.ProductParsed
 import com.henipiter.receipt.parsed.ReceiptParsed
 import com.henipiter.receipt.parsed.StoreParsed
-import com.henipiter.receipt.dto.PriceUtils
-import com.henipiter.receipt.fileanalyzer.parser.model.ReceiptData
-import com.henipiter.receipt.fileanalyzer.parser.util.Stores
 import kotlin.math.roundToInt
 
 class OrlenParser : ReceiptParser {

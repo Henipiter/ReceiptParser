@@ -1,0 +1,46 @@
+TICKET NO WH 111 CODE 4155
+PASSENGER
+Jan Kowalski
+PRICE
+16,00 zł
+TICKET
+1x Adult
+Poznań Gł. Warszawa Gł.
+Departure / arrival date: 09.01.2026 09.01.2026
+Departure / arrival time: 10:46 12:10 Time: 1h 24min
+Train: 1111 Grom
+Carriage: 1, 1 class
+Seats: 1  w At the table
+w - window
+Price details
+PRZEJAZD TAM
+D-Promo VIII
+Ticket
+1x Adult
+VAT (zł)
+8% 1,19
+TOTAL
+PRICE (zł)
+16,00 zł
+16,00 zł
+Purchase time
+06.01.2026 21:02
+Payment method
+Card
+Payment no: 11
+Reference no
+111
+Tariff Distance
+11 km
+Travel carbon footprint
+Your train journey emits approximately 1 kg CO₂ per passenger. This is more than four times less than
+travelling by car and around five times less than travelling by plane for the same distance (EEA, 2018;
+EU-wide average figures). Further information: www.intercity.pl/pl/zrownowazony-rozwoj
+Page 1 of 2
+Carrier/seller
+PKP Intercity
+The ticket is valid only on PKP Intercity trains. The ticket is not a VAT invoice.
+Additional information
+Information about your trip may change. Please check the website
+https://www.intercity.pl/en/sk for any changes.
+Page 2 of 2

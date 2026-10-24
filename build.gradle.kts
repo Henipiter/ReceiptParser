@@ -13,7 +13,10 @@ repositories {
 dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.1")
     implementation("org.jsoup:jsoup:1.23.2")
+
     testImplementation(kotlin("test"))
+    testImplementation("io.mockk:mockk:1.13.12")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.8.1")
 }
 
 kotlin {

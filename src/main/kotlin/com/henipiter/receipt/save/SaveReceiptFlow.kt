@@ -1,12 +1,13 @@
 package com.henipiter.receipt.save
 
-import com.henipiter.receipt.exception.StoreNotFoundException
 import com.henipiter.receipt.base.AddressBase
 import com.henipiter.receipt.base.ProductBase
 import com.henipiter.receipt.base.ReceiptBase
 import com.henipiter.receipt.base.StoreBase
 import com.henipiter.receipt.dto.ReceiptExtras
+import com.henipiter.receipt.exception.InvalidReceiptException
 import com.henipiter.receipt.exception.ReceiptAlreadyExistsException
+import com.henipiter.receipt.exception.StoreNotFoundException
 import com.henipiter.receipt.fileanalyzer.parser.model.ReceiptData
 import java.util.*
 
@@ -22,13 +23,10 @@ class SaveReceiptFlow(
 ) {
 
     suspend fun saveData(receiptData: ReceiptData, extras: ReceiptExtras) {
-        try {
-            validateParsedReceiptBeforeSave(receiptData)
-        } catch (_: Exception) {
-            return
-        }
+        validateParsedReceiptBeforeSave(receiptData)
 
         var store = getStoreByNip(receiptData.store.nip)
+        val isNewStore = store == null
 
         if (store == null && !extras.categoryId.isNullOrEmpty()) {
             addStore(receiptData, extras.categoryId)
@@ -47,7 +45,7 @@ class SaveReceiptFlow(
         }
 
         updateCategoryId(receiptData)
-        addAddress(receiptData)
+        addAddress(receiptData, isNewStore)
         addReceipt(receiptData, extras.payerId, extras.beneficiaryId)
         addProducts(receiptData)
     }
@@ -87,26 +85,27 @@ class SaveReceiptFlow(
         receiptData.receipt.payerId = payerId
         receiptData.receipt.beneficiaryId = beneficiaryId
         receiptData.receipt.id = insertReceipt(receiptData.receipt)
-
     }
 
-    private suspend fun addAddress(receiptData: ReceiptData) {
-        if (receiptData.receipt.online) {
-            val address = getAddressById(receiptData.store.addressId)
 
-            if (address != null) {
-                receiptData.address = address
+    private suspend fun addAddress(receiptData: ReceiptData, isNewStore: Boolean) {
+        val store = receiptData.store
+
+        if (receiptData.receipt.online || isNewStore) {
+            val existing = getAddressById(store.addressId)
+            if (existing != null) {
+                receiptData.address = existing
                 return
             }
-
-            receiptData.address.id = receiptData.store.addressId
-            receiptData.address.storeId = receiptData.store.id
+            receiptData.address.id = store.addressId
+            receiptData.address.storeId = store.id
+            receiptData.address.id = insertAddress(receiptData.address)
+            return
         }
 
-        val address = getAddressByPostalCode(receiptData.address.postalCode, receiptData.store.id)
-
-        if (address != null) {
-            receiptData.address = address
+        val existing = getAddressByPostalCode(receiptData.address.postalCode, store.id)
+        if (existing != null) {
+            receiptData.address = existing
             return
         }
 
@@ -116,17 +115,17 @@ class SaveReceiptFlow(
     fun validateParsedReceiptBeforeSave(receiptData: ReceiptData) {
         receiptData.receipt.apply {
             if (date.isEmpty() || time.isEmpty() || pln == 0) {
-                throw Exception("Invalid receipt data")
+                throw InvalidReceiptException()
             }
         }
         receiptData.address.apply {
             if (city.isEmpty() || postalCode.isEmpty() || streetName.isEmpty()) {
-                throw Exception("Invalid receipt data")
+                throw InvalidReceiptException()
             }
         }
         receiptData.products.forEach { product ->
             if (product.name.isEmpty() || product.quantity == 0 || product.unitPrice == 0 || product.subtotalPrice == 0 || product.finalPrice == 0) {
-                throw Exception("Invalid receipt data")
+                throw InvalidReceiptException()
             }
         }
 

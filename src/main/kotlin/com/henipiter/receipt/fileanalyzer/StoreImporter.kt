@@ -1,7 +1,7 @@
 package com.henipiter.receipt.fileanalyzer
 
-import kotlin.io.encoding.Base64
 import com.henipiter.receipt.fileanalyzer.parser.util.Stores
+import kotlin.io.encoding.Base64
 import kotlin.io.encoding.ExperimentalEncodingApi
 
 enum class PayloadType { JSON, HTML, PDF_BASE64 }
