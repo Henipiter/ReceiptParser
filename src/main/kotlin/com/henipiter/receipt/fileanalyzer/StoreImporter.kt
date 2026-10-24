@@ -26,7 +26,6 @@ interface StoreImporter {
     val allowedHosts: Set<String>
     val loginHosts: Set<String> get() = emptySet()
     val scriptAsset: String
-    val userAgent: String? get() = null
 
     fun shouldInject(url: String): Boolean
 
