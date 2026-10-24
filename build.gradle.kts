@@ -1,5 +1,6 @@
 plugins {
     kotlin("jvm") version "2.1.0"
+    kotlin("plugin.serialization") version "2.1.0"
     `maven-publish`
 }
 
@@ -11,7 +12,7 @@ repositories {
 }
 
 dependencies {
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.1")
+    api("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.1")
     implementation("org.jsoup:jsoup:1.23.2")
 
     testImplementation(kotlin("test"))
@@ -21,6 +22,10 @@ dependencies {
 
 kotlin {
     jvmToolchain(17)
+}
+
+java {
+    withSourcesJar()
 }
 
 tasks.test {
