@@ -77,8 +77,37 @@ class IntercityParser : ReceiptParser {
 
     private fun getRoute(content: String): String {
         val match = routeRegex.find(content) ?: return ""
-        return match.groupValues[1].trim()
+        val stations = match.groupValues[1].trim()
+
+        val dates = journeyDatesRegex.find(content)
+        val times = journeyTimesRegex.find(content)
+
+        val depDate = dates?.groupValues?.get(1)
+        val arrDate = dates?.groupValues?.get(2)
+        val depTime = times?.groupValues?.get(1)
+        val arrTime = times?.groupValues?.get(2)
+
+        if (depDate == null || depTime == null || arrTime == null) return stations
+
+        val arrivalPart = if (arrDate != null && arrDate != depDate) "$arrDate $arrTime" else arrTime
+
+        val parts = stations.split(stationSplitRegex).filter { it.isNotBlank() }
+        return if (parts.size == 2) {
+            "$depDate $depTime ${parts[0]} - $arrivalPart ${parts[1]}"
+        } else {
+            "$depDate $depTime - $arrivalPart $stations"
+        }
     }
+
+    val journeyDatesRegex = Regex(
+        """(?:Data odjazdu\s*/\s*przyjazdu|Departure\s*/\s*arrival date)\s*:\s*(\d{2}\.\d{2}\.\d{4})\s+(\d{2}\.\d{2}\.\d{4})"""
+    )
+
+    val journeyTimesRegex = Regex(
+        """(?:Godzina odjazdu\s*/\s*przyjazdu|Departure\s*/\s*arrival time)\s*:\s*(\d{2}:\d{2})\s+(\d{2}:\d{2})"""
+    )
+
+    val stationSplitRegex = Regex("""\t+|\s{2,}""")
 
     data class TicketEntry(val name: String, val quantity: Int, val discountPercent: Int)
 

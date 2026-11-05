@@ -18,13 +18,13 @@ class IntercityParserTest {
         val text = ResourceFileLoader.readTextUtf8(filePath)
         val expectedProducts = listOf(
             ProductParsed().apply {
-                name = "Bilet normalny (Poznań Gł. Choroszcz)"
+                name = "Bilet normalny (03.01.2026 16:46 - 17:11 Poznań Gł. Choroszcz)"
                 ptuType = "A"
                 unitPrice = 1900
                 finalPrice = 1900
             },
             ProductParsed().apply {
-                name = "STU/DOK (Poznań Gł. Choroszcz)"
+                name = "STU/DOK (03.01.2026 16:46 - 17:11 Poznań Gł. Choroszcz)"
                 ptuType = "A"
                 unitPrice = 931
                 finalPrice = 931
@@ -64,7 +64,7 @@ class IntercityParserTest {
         val text = ResourceFileLoader.readTextUtf8((filePath))
         val expectedProducts = listOf(
             ProductParsed().apply {
-                name = "Adult (Poznań Gł. Warszawa Gł.)"
+                name = "Adult (09.01.2026 10:46 - 12:10 Poznań Gł. Warszawa Gł.)"
                 ptuType = "A"
                 unitPrice = 1600
                 finalPrice = 1600
